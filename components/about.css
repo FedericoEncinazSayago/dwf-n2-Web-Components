@@ -1,0 +1,53 @@
+.about-section {
+  background-color: #192130;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+  gap: 30px;
+}
+
+.about-content {
+  width: 100%; 
+}
+
+@media (min-width: 768px) {
+  .about-section {
+    flex-direction: row;
+    gap: 50px;
+    height: 90vh;
+  }
+}
+
+.title-about,
+.text-about {
+  font-size: 20px; 
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title-about,
+  .text-about {
+    text-align: left;
+  }
+}
+
+.title-about {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+}
+
+.img-about {
+  width: 100%; 
+  max-width: 100%; 
+  height: auto; 
+}
+
+@media (min-width: 768px) {
+  .img-about {
+    width: 35%;
+    min-width: 200px;
+  }
+}

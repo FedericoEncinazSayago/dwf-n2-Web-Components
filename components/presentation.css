@@ -1,0 +1,46 @@
+.presentation-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  padding: 30px;
+  height: 100vh;
+  background-color: #13171C;
+}
+
+@media (min-width: 768px) {
+  .presentation-section {
+    flex-direction: row;
+    gap: 50px;
+  }
+}
+
+.text-presentacion {
+  text-align: center;
+  font-size: 30px;
+  max-width: 600px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .text-presentacion {
+    font-size: 45px;
+    text-align: left;
+  }
+}
+
+.text-presentation_blue{
+  color: #00ADB5;
+}
+
+.img-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.presentation-img {
+  max-width: 500px;
+}
