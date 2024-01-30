@@ -80,7 +80,7 @@ function addComponentFooterInContainer(container) {
     {
       text: "Services",
       url: "./img/user.svg",
-      src: "./servicios.html",
+      src: "./services.html",
       description: "An image of user",
     },
     {
