@@ -18,9 +18,6 @@ function createIcon(className, icon) {
     link.appendChild(textElement);
   }
 
-  console.log(icon);
-  console.log(link);
-
   divElement.appendChild(link);
 
   return divElement;

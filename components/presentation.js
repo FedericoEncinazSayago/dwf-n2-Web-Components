@@ -20,8 +20,6 @@ async function createPresentationComponent(container, page) {
       )
     );
 
-    console.log(presentation);
-
     h1El.appendChild(spanEl);
     container.appendChild(h1El);
     container.appendChild(divEl);

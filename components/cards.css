@@ -1,3 +1,25 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
 .cards-section {
   display: flex;
   flex-direction: column;
@@ -9,12 +31,14 @@
   gap: 40px;
   width: 100%;
   padding: 60px 20px;
+  animation: fadeIn 1s ease-out;
 }
 
 .cards-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   gap: 40px;
 }
 
@@ -22,20 +46,27 @@
   .cards-content {
     flex-direction: row;
     align-items: stretch;
+    justify-content: center;
   }
 }
 
 .card {
+  flex-basis: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
   border-radius: 16px;
   background-color: rgba(57, 62, 70, 0.50);
-  backdrop-filter: blur(2px);
   padding: 42px 10px;
   max-width: 350px;
   width: 100%;
+  animation: fadeIn 1s ease-out;
+}
+
+.card_hidden {
+  animation: fadeOut 1s ease-in; /* Agrega la animación de salida a las tarjetas ocultas */
+  display: none;
 }
 
 .card-info {
@@ -63,4 +94,14 @@
   width: 100%;
   max-width: 200px;
   object-fit: cover;
+}
+
+.card__button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00ADB5;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }

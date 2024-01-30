@@ -24,17 +24,18 @@ function createImg(className, url, description) {
   return imgEl;
 }
 
-function createInput(type, className, id, placeholder) {
+function createInput(type, className, id, placeholder, name) {
   const inputEl = document.createElement("input");
   inputEl.type = type;
   inputEl.className = className;
   inputEl.id = id;
   inputEl.placeholder = placeholder;
+  inputEl.name = name;
 
   return inputEl;
 }
 
-function createLabel(className, forEl, text) {
+function createLabel(className, forEl, text, value) {
   const labelEl = document.createElement("label");
   labelEl.className = className;
   labelEl.setAttribute("for", forEl);
@@ -51,14 +52,22 @@ function createButton(className, text) {
   return buttonEl;
 }
 
-function createTextarea(className, id, cols, rows) {
+function createTextarea(className, id, cols, rows, name) {
   const textareaEl = document.createElement("textarea");
   textareaEl.className = className;
   textareaEl.id = id;
   textareaEl.cols = cols;
   textareaEl.rows = rows;
+  textareaEl.name = name;
 
   return textareaEl;
+}
+
+function createNav(className) {
+  const navEl = document.createElement("nav");
+  navEl.className = className;
+
+  return navEl;
 }
 
 function createLink(className, url) {
@@ -67,4 +76,13 @@ function createLink(className, url) {
   linkEl.href = url;
 
   return linkEl;
+}
+
+function addLinksInNav(nav, links, subClassLink = "") {
+  links.forEach((link) => {
+    const linkEl = createLink(link.class + subClassLink, link.url);
+    linkEl.textContent = link.text;
+
+    nav.appendChild(linkEl);
+  });
 }

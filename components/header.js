@@ -1,56 +1,71 @@
 function createHeaderComponent(container, links, imgs, classDivs) {
-  const divsEl = createDivsWithClass(classDivs);
-  const navEl = document.createElement("nav");
-
-  navEl.className = "nav";
-
-  divsEl.forEach((div) => {
-    addImgInHeader(div, imgs);
-  });
+  const divsEl = createDivsWithClass(classDivs, imgs);
+  const navs = createNavsForHeader(links);
 
   addTextLogo(divsEl[0]);
-  addLinksInNav(navEl, links);
-  addElementInHeader(container, divsEl, navEl);
+  addElementsInHeader(container, divsEl, navs);
 }
 
-function createDivsWithClass(classDivs) {
-  const divArray = [];
+function createDivsWithClass(classDivs, imgs) {
+  return classDivs.map((div) => {
+    const divElement = createDiv(div.class);
 
-  classDivs.forEach((element) => {
-    const newDiv = createDiv(element.class);
-    divArray.push(newDiv);
+    if (div.subContainer) {
+      const subContainer = createDiv(div.subContainer);
+
+      addImgsInContainer(subContainer, imgs);
+      divElement.appendChild(subContainer);
+    }
+
+    addImgsInContainer(divElement, imgs);
+    return divElement;
   });
-
-  return divArray;
 }
 
-function addImgInHeader(div, imgs) {
+function addImgsInContainer(div, imgs) {
   imgs.forEach((img) => {
-    if (img.divClass == div.className) {
+    if (img.divClass === div.className) {
       const imgEl = createImg(img.class, img.url, img.description);
       div.appendChild(imgEl);
     }
   });
 }
 
+function createNavsForHeader(links) {
+  const navHeader = createNav("nav-header");
+  const navMenu = createNav("nav-menu-header");
+
+  addLinksInNav(navMenu, links, "-menu");
+  addLinksInNav(navHeader, links, "-header");
+
+  return [navHeader, navMenu];
+}
+
+function addElementsInHeader(header, divs, navs) {
+  addEventOpenMenu(divs[1], divs[2]);
+  addEventCloseMenu(divs[2], divs[2].firstChild);
+
+  header.appendChild(divs[0]);
+  header.appendChild(divs[1]);
+  header.appendChild(navs[0]);
+
+  divs[2].appendChild(navs[1]);
+  header.appendChild(divs[2]);
+}
+
+function addEventCloseMenu(menu, menuContent) {
+  menuContent.addEventListener("click", () => {
+    menu.classList.remove("menu-header_active");
+  });
+}
+
+function addEventOpenMenu(burger, menu) {
+  burger.addEventListener("click", () => {
+    menu.classList.add("menu-header_active");
+  });
+}
+
 function addTextLogo(div) {
   const spanEl = createContentText("span", "text-logo", "FS");
   div.appendChild(spanEl);
-}
-
-function addElementInHeader(header, divs, nav) {
-  divs.forEach((div) => {
-    header.appendChild(div);
-  });
-
-  header.appendChild(nav);
-}
-
-function addLinksInNav(nav, links) {
-  links.forEach((link) => {
-    const linkEl = createLink(link.class, link.url);
-    linkEl.textContent = link.text;
-
-    nav.appendChild(linkEl);
-  });
 }

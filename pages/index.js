@@ -2,6 +2,7 @@ function main() {
   const header = document.querySelector(".header");
   const presentation = document.querySelector(".presentation-section");
   const about = document.querySelector(".about-section");
+  const cardsSection = document.querySelector(".cards-section");
   const cards = document.querySelector(".cards-content");
   const formSection = document.querySelector(".form-section");
   const footer = document.querySelector(".footer");
@@ -9,7 +10,7 @@ function main() {
   addComponentHeaderInContainer(header);
   createAboutComponent(about, "about-me");
   createPresentationComponent(presentation, "index");
-  createCardsComponent(cards, "cards", "service");
+  createCardsComponent(cards, cardsSection, "cards", "service");
   addComponentFormInContainer(formSection);
   addComponentFooterInContainer(footer);
 }
@@ -17,18 +18,31 @@ function main() {
 main();
 
 function addComponentHeaderInContainer(container) {
-  const divs = [{ class: "logo-content" }, { class: "burger-content" }];
-  const links = [
-    { class: "link", text: "Portfolio", url: "./portfolio.html" },
-    { class: "link", text: "Services", url: "./pages/servicios.html" },
-    { class: "link", text: "Contact", url: "./pages/contacto.html" },
+  const divs = [
+    { class: "logo-content" },
+    { class: "burger-content" },
+    { class: "menu-header", subContainer: "menu-content" },
   ];
+
+  const links = [
+    { class: "link", text: "Home", url: "./index.html" },
+    { class: "link", text: "Portfolio", url: "./portfolio.html" },
+    { class: "link", text: "Services", url: "./services.html" },
+    { class: "link", text: "Contact", url: "./contact.html" },
+  ];
+
   const imgs = [
     {
       class: "burger-dash",
       url: "./img/burger-dash.svg",
       divClass: "burger-content",
       description: "An image of burger dash",
+    },
+    {
+      class: "close",
+      url: "./img/close.svg",
+      divClass: "menu-content",
+      description: "An image of close",
     },
   ];
 
@@ -43,6 +57,7 @@ function addComponentFormInContainer(container) {
       text: "Name",
       placeholder: "Name",
       typeInput: "text",
+      value: "name",
     },
     {
       class: "form__label",

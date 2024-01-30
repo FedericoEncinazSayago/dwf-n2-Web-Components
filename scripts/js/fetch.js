@@ -22,6 +22,20 @@ async function fetchContentful(page, contentType, typeReturn) {
   }
 }
 
+async function fetchApx(url, requestOptions) {
+  try {
+    const response = await fetch(url, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Error fetching APX data");
+    }
+
+    return response.json();
+  } catch (error) {
+    throw new Error("Error fetching APX data: " + error.message);
+  }
+}
+
 function getAllItems(data) {
   const assets = data.includes.Asset;
   const items = data.items;
